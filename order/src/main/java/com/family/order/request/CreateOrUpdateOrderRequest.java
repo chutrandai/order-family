@@ -15,6 +15,7 @@ import java.util.List;
 public class CreateOrUpdateOrderRequest {
     private String orderId;
     private String orderName;
+    private String user;
     private String type;
     private Date createdDate;
     private BigDecimal totalAmount;

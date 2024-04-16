@@ -34,7 +34,8 @@ public class OrderService {
     private OrderDetailRepository orderDetailRepository;
     public ResponseEntity<List<OrderDTO>> getOrders(OrdersRequest request) {
         Pageable pageable = PageRequest.of(request.getPageNo(), request.getPageSize());
-        List<OrderEntity> orderEntities = orderRepository.getOrders(request.getName(), request.getType(), request.getFromDate(), request.getToDate(), pageable);
+        List<OrderEntity> orderEntities = orderRepository.getOrders(request.getName(), request.getType(), request.getUser(),
+                request.getFromDate(), request.getToDate(), pageable);
         if (orderEntities.isEmpty()) {
             log.info("Empty list");
             return new ResponseEntity<>(HttpStatus.OK);
@@ -53,6 +54,7 @@ public class OrderService {
     private boolean processOrder(CreateOrUpdateOrderRequest request, OrderEntity entity) {
         // save order
         entity.setOrderName(request.getOrderName());
+        entity.setUser(request.getUser());
         entity.setType(request.getType());
         entity.setCreatedDate(new Date());
         entity.setTotalAmount(request.getTotalAmount());
@@ -62,7 +64,6 @@ public class OrderService {
             List<OrderDetailEntity> lstDetailEntity = new ArrayList<>();
             for (OrderDetailDTO orderDetail : request.getOrderDetails()) {
                 OrderDetailEntity detailEntity = new OrderDetailEntity();
-                detailEntity.setOrderDetailId(String.valueOf(new Date().getTime()));
                 detailEntity.setOrderId(entity.getOrderId());
                 detailEntity.setProductName(orderDetail.getProductName());
                 detailEntity.setQuantity(orderDetail.getQuantity());

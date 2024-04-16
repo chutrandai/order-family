@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name = "order")
+@Table(name = "pay_order")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,21 +18,24 @@ import java.util.Date;
 public class OrderEntity {
     @Id
     @GeneratedValue
-    @Column(name = "orderId")
-    private String orderId;
+    @Column(name = "order_id")
+    private BigDecimal orderId;
 
-    @Column(name = "orderName")
+    @Column(name = "user")
+    private String user;
+
+    @Column(name = "order_name")
     private String orderName;
 
     @Column(name = "type")
     private String type;
 
-    @Column(name = "createdDate")
+    @Column(name = "created_date")
     private Date createdDate;
 
-    @Column(name = "totalAmount")
+    @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
-    @Column(name = "modifyDate")
+    @Column(name = "modify_date")
     private Date modifyDate;
 }

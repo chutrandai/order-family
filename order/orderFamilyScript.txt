@@ -1,0 +1,22 @@
+-- SCRIPT ORDER FAMILY -- 
+DROP TABLE IF EXISTS "pay_order";
+CREATE TABLE "pay_order" (
+	"order_id" numeric NOT NULL PRIMARY KEY,
+	"user" VARCHAR NOT NULL,
+	"order_name" VARCHAR NOT NULL,
+	"type" VARCHAR NOT NULL,
+	"created_date" DATE NOT NULL,
+	"total_amount" BIGINT NOT NULL DEFAULT 0,
+	"modify_date" DATE
+);
+DROP TABLE IF EXISTS "pay_order_detail";
+CREATE TABLE "pay_order_detail" (
+	"order_detail_id" numeric NOT NULL PRIMARY KEY,
+	"order_id" numeric NOT NULL,
+	"product_name" VARCHAR NOT NULL,
+	"quantity" numeric NOT NULL,
+	"unit_price" BIGINT NOT NULL,
+	"unit_code" VARCHAR NOT NULL,
+	"total_amount" BIGINT NOT NULL DEFAULT 0
+);
+

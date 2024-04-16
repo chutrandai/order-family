@@ -19,10 +19,10 @@ public class OrderDetailEntity implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "orderDetailId")
-    private String orderDetailId;
+    private BigDecimal orderDetailId;
 
     @Column(name = "orderId")
-    private String orderId;
+    private BigDecimal orderId;
 
     @Column(name = "productName")
     private String productName;
