@@ -21,8 +21,8 @@ public class OrderEntity {
     @Column(name = "order_id")
     private BigDecimal orderId;
 
-    @Column(name = "user")
-    private String user;
+    @Column(name = "user_name")
+    private String userName;
 
     @Column(name = "order_name")
     private String orderName;

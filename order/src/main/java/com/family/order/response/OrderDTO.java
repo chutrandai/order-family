@@ -17,7 +17,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
     private String orderName;
-    private String user;
+    private String user_name;
     private String type;
     private Date createdDate;
     private BigDecimal totalAmount;

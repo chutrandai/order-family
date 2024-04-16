@@ -11,7 +11,7 @@ import java.util.Date;
 @Setter
 public class OrdersRequest extends PagingRequest {
     private String name;
-    private String user;
+    private String userName;
     private String type;
     private Date fromDate;
     private Date toDate;

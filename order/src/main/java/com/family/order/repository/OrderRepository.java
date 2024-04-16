@@ -14,8 +14,8 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<OrderEntity, String> {
     @Query("select bo from OrderEntity bo where bo.orderName like concat('%', concat(:orderName, '%')) " +
             " and (:type is null or bo.type = :type) " +
-            " and (:user is null or bo.user = :user) " +
+            " and (:userName is null or bo.userName = :userName) " +
             " and bo.createdDate between :fromDate and :toDate ")
-    List<OrderEntity> getOrders(@Param("orderName") String orderName, @Param("type") String type, @Param("user") String user,
+    List<OrderEntity> getOrders(@Param("orderName") String orderName, @Param("type") String type, @Param("userName") String userName,
                                        @Param("fromDate") Date fromDate, @Param("toDate") Date toDate, Pageable pageable);
 }
